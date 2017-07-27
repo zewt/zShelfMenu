@@ -1,5 +1,7 @@
 Show Maya shelves as menus.
 
+![](https://s3.amazonaws.com/zewt/zShelfMenu+screenshot.png)
+
 Maya shelves are handy, but they quickly become unmanagable, since they can only show 6-letter labels.
 This plugin shows shelves as Maya menus.
 
