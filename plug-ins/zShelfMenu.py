@@ -235,6 +235,13 @@ def create_shelf_button_menu(shelf, parent_menu=None):
             popup_menu = popup_menus[0]
             popup_menu_items = pm.popupMenu(popup_menu, q=True, itemArray=True) or []
 
+            # Ignore popup items that are defaults, eg. "Open" and "Edit" that appear in the
+            # shelf context menu.
+            def is_default_menu_item(popup):
+                cmd = pm.menuItem(p, q=True, command=True)
+                return isinstance(cmd, basestring) and cmd.startswith('/*dSBRMBMI*/')
+            popup_menu_items = [p for p in  popup_menu_items if not is_default_menu_item(p)]
+
             # popupMenu returns ambiguous paths.  Prefix the path to the popup menu to make
             # sure we query the right thing.
             popup_menu_items = [popup_menu + '|' + item for item in popup_menu_items]
